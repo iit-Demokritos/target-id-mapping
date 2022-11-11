@@ -1,6 +1,6 @@
 # Mapping protein targets' Uniprot, TTD, UMLS, Ensembl, DisGeNET ids:
 
-This project includes a simple Java program that produces a [TSV file](https://github.com/iit-Demokritos/target-id-mapping/blob/main/target-mappings_upd.tsv?raw=true), listing thousand of known target protein available ids that could be found in target databases.
+This project includes a simple Java program that produces a [TSV file](https://github.com/iit-Demokritos/target-id-mapping/blob/main/target-mappings_latest.tsv?raw=true), listing thousand of known target protein available ids that could be found in target databases.
 
 In particular, we start from retrieving the drug information included in the latest Therapeutic Target Database [1] (VERSION 7.1.01, RELEASED ON 2019.07.14) in a file. We then enrich the drug fields by querying the UMLS Metathesaurus vocabulary Database[2], using the MetamorphoSys tool  and by parsing the DisGenet_uniprot_mapping file, provided by DisGeNET [3].
 
