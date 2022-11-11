@@ -1,8 +1,8 @@
-# Mapping protein targets' Uniprot, TTD, UMLS, Ensembl ids:
+# Mapping protein targets' Uniprot, TTD, UMLS, Ensembl, DisGeNET ids:
 
 This project includes a simple Java program that produces a [TSV file](https://github.com/iit-Demokritos/target-id-mapping/blob/main/target-mappings_upd.tsv?raw=true), listing thousand of known target protein available ids that could be found in target databases.
 
-In particular, we start from retrieving the drug information included in the latest Therapeutic Target Database [1] (VERSION 7.1.01, RELEASED ON 2019.07.14) in a file. We then enrich the drug fields by querying the UMLS Metathesaurus vocabulary Database[2], using the MetamorphoSys tool 
+In particular, we start from retrieving the drug information included in the latest Therapeutic Target Database [1] (VERSION 7.1.01, RELEASED ON 2019.07.14) in a file. We then enrich the drug fields by querying the UMLS Metathesaurus vocabulary Database[2], using the MetamorphoSys tool  and by parsing the DisGenet_uniprot_mapping file, provided by DisGeNET [3].
 
 
 ## Licence & Required Citation
@@ -14,16 +14,17 @@ The Java code and TSV file are provided **only for academic/research use and are
 
 ## Mapping TSV file data format
 
-The resulting file ([target-mappings_upd.tsv](https://github.com/iit-Demokritos/target-id-mapping/blob/main/target-mappings_upd.tsv?raw=true)) includes a tab-separated entry for each target, including multiple ids that could be found and crossed-checked from the aforementioned sources.
+The resulting file ([target-mappings_latest.tsv](https://github.com/iit-Demokritos/target-id-mapping/blob/main/target-mappings_latest.tsv?raw=true)) includes a tab-separated entry for each target, including multiple ids that could be found and crossed-checked from the aforementioned sources.
 For ids not found in none of the above sources, 'null' string is added. Multiple TTD ids/gene names for a specific target are separated with a comma separator(,).
 An example of the format of the TSV data file is as follows:
 
 ```sh
-C1420086	NTCP_HUMAN	Q14973	SLC10A1	ENSG00000100652	T99189,T71907
-C1442506	MTR1B_HUMAN	P49286	MTNR1B	ENSG00000134640	T48268
-C1417177	MKRN1_HUMAN	Q9UHC7	MKRN1	ENSG00000133606	T86877
-C1416588	KCNJ6_HUMAN	P48051	KCNJ6	ENSG00000157542	T17721
-C1413043	CAH2_HUMAN	P00918	CA2	ENSG00000104267	T20401
+CUI	Uniprot_Name	Uniprot_id	Gene_name	EnsembleGeneId	TTD_id	disgenet_gene_id
+C1420086	NTCP_HUMAN	Q14973	SLC10A1	ENSG00000100652	T99189,T71907 6554
+C1442506	MTR1B_HUMAN	P49286	MTNR1B	ENSG00000134640	T48268  4544
+C1417177	MKRN1_HUMAN	Q9UHC7	MKRN1	ENSG00000133606	T86877  23608
+C1416588	KCNJ6_HUMAN	P48051	KCNJ6	ENSG00000157542	T17721  3763
+C1413043	CAH2_HUMAN	P00918	CA2	ENSG00000104267	T20401  760
 ...
 ```
 
@@ -40,3 +41,5 @@ and also include needed jar libraries in the CLASSPATH.
 
 [2]: Bodenreider, O. (2004). The unified medical language system (UMLS): integrating biomedical terminology. Nucleic acids research, 32(suppl_1), D267-D270.
 
+[3]: Janet Piñero, Juan Manuel Ramírez-Anguita, Josep Saüch-Pitarch, Francesco Ronzano, Emilio Centeno, Ferran Sanz, Laura I Furlong.
+The DisGeNET knowledge platform for disease genomics: 2019 update. Nucl. Acids Res. (2019) doi:10.1093/nar/gkz1021
