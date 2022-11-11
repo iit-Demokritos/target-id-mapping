@@ -12,9 +12,66 @@ import java.util.Set;
 public class CreateTargetMappings {
 	
 	public static void main(String [] args) {
-		//create(args);
-		//enrich(args);
+		create(args);
+		enrich(args);
 		enrichTTDs(args);
+		enrichDisGenetIds(args);
+		
+	}
+	
+	public static void enrichDisGenetIds(String []args) {
+		try {
+        	String dtiFolder = args[0];
+        	int n=0;
+        	
+			String targetmap1 = dtiFolder+"target-mappings_upd.tsv";
+			String targetmap2 = dtiFolder+"target-mappings_latest.tsv";
+			
+			
+			BufferedReader br = new BufferedReader(new FileReader(targetmap1));
+			PrintWriter writerDrugMap= new PrintWriter(targetmap2, "UTF-8");
+
+			String line= br.readLine();
+			writerDrugMap.println(line+"\tdisgenet_gene_id");
+			while ((line = br.readLine()) != null ){
+				String[] values = line.split("\t");
+				String unid = values[2];
+				String disgenid = getDisGenetMapping(unid, dtiFolder); //DisGenet_uniprot_mapping.tsv
+				String addition = disgenid;
+				if (!line.endsWith("\t"))
+					addition="\t"+addition;
+				writerDrugMap.println(line+addition);
+			}
+			br.close();
+			writerDrugMap.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	static String getDisGenetMapping(String unip, String ddiPath) {
+		
+   		String id="null";
+		String line;
+		String drugMappings = ddiPath+"DisGenet_uniprot_mapping.tsv";
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(drugMappings));
+	   		
+			while ((line = br.readLine()) != null ){
+				if(line.contains(unip)) {
+			        String[] values = line.split("\t");
+			        id = values[1];
+			        break;
+				}    
+			}
+			br.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return id;
+
 	}
 	
 	public static void enrichTTDs(String []args) {
