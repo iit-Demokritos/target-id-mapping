@@ -7,7 +7,8 @@ In particular, we start from retrieving the drug information included in the lat
 
 ## Licence & Required Citation
 For any use of the drug-mappings.tsv file in your work, **a citation to the following paper is expected:**
-*Bougiatiotis, K., Aisopos, F., Nentidis, A., Krithara, A., & Paliouras, G. (2020, August). Drug-Drug Interaction Prediction on a Biomedical Literature Knowledge Graph. In International Conference on Artificial Intelligence in Medicine (pp. 122-132). Springer, Cham.*
+
+*Aisopos, F., Paliouras, G. Comparing methods for drug–gene interaction prediction on the biomedical literature knowledge graph: performance versus explainability. BMC Bioinformatics 24, 272 (2023), [DOI](https://doi.org/10.1186/s12859-023-05373-2).*
 
 target_id_mapping - NCSR Demokritos module Copyright 2021 Fotis Aisopos
 The Java code and TSV file are provided **only for academic/research use and are licensed under the Apache License, Version 2.0 (the "License")**; you may not use this file except in compliance with the License. You may obtain a copy of the License at: https://www.apache.org/licenses/LICENSE-2.0 .
